@@ -18,22 +18,41 @@
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+	 <title>{{ site.title }}</title>
   </head>
   <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      <h1 class="project-name">{{ site.title }}</h1>
+      <h2 class="project-tagline">{{ page.description }}</h2>
+		<div class="container">
+      {% if site.has_paper_link %}
+        <a href="{{ site.paper_link }}" class="btn">Read the Paper</a>
+      {% endif %}
+		
+      {% if site.has_cite_link %}
+        <a href=" {{ site.cite_link }}" class="btn">Cite the Paper</a>
+		{% endif %}
+
+      {% if site.has_video_link %}
+        <a href=" {{ site.video_link }} " class="btn">Videos</a>
+      {% endif %}
+
+      {% if site.has_slide_link %}
+        <a href="{{ site.slide_link }}" class="btn">Slides</a>
+      {% endif %}
+
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
+		
       {% if site.show_downloads %}
         <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
       {% endif %}
+		</div>
     </header>
-
+	
     <main id="content" class="main-content" role="main">
       {{ content }}
 
